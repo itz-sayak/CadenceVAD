@@ -24,6 +24,6 @@
   "note": "Measured on Linux/x86-64 on an otherwise idle machine, single thread, pinned core. The identical source builds for Windows through the MSVC CMake preset and is parity-checked in CI, but Windows timings require a Windows host and are not estimated here.",
   "reference": {
     "apple_m4_pro_accelerate_p50_us": 11.417,
-    "source": "upstream FlashVAD native-runtime-m4-pro.json"
+    "source": "third-party Apple Accelerate baseline runtime"
   }
 }

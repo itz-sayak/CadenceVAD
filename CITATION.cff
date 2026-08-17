@@ -12,14 +12,3 @@ abstract: >-
   A causal streaming voice-activity detector with a learnable modulation-domain
   filterbank, a single-protocol AVA-Speech evaluation harness, and a portable
   low-latency C runtime for Windows, Linux and macOS.
-references:
-  - type: software
-    title: "FlashVAD"
-    authors:
-      - family-names: "Maurya"
-        given-names: "Himanshu"
-    repository-code: "https://github.com/oss-codes/flashvad"
-    license: "MIT AND CC-BY-4.0"
-    notes: >-
-      CadenceVAD is derived from FlashVAD. The retained v0.1 reference checkpoint
-      is the FlashVAD v0.1 checkpoint, redistributed under CC BY 4.0.

@@ -30,7 +30,7 @@ warm-up.
 | portable + AVX2 | **9.024 µs** | 9.054 µs | 9.834 µs | 9.047 µs | 0.00090 |
 | portable, scalar | 27.061 µs | 28.333 µs | 30.206 µs | 27.214 µs | 0.00271 |
 
-Per-call state is 20,064 bytes. The upstream Apple Accelerate runtime measured
+Per-call state is 20,064 bytes. An Apple Accelerate baseline runtime measured
 11.417 µs p50 on an M4 Pro; the portable AVX2 build is faster while depending on
 nothing beyond a C11 compiler.
 
@@ -71,7 +71,7 @@ bootstrap. Protocol: `docs/AVA_SPEECH.md`.
 | conv-v1-base | 46,170 | 0.8418 | [0.8300, 0.8536] | 0.765 | 0.157 | 0.292 | 0.912 | 0.796 | 0.827 |
 | conv-v3-m | 99,930 | 0.8348 | [0.8180, 0.8427] | 0.773 | 0.189 | 0.262 | 0.906 | 0.785 | 0.821 |
 | conv-v1-ema | 49,008 | 0.8300 | [0.8148, 0.8441] | 0.725 | 0.091 | 0.385 | 0.882 | 0.779 | 0.828 |
-| v0.1 reference | 46,170 | 0.8295 | [0.8187, 0.8408] | 0.764 | 0.358 | 0.181 | 0.861 | 0.814 | 0.820 |
+| v0.1 baseline | 46,170 | 0.8295 | [0.8187, 0.8408] | 0.764 | 0.358 | 0.181 | 0.861 | 0.814 | 0.820 |
 | conv-v1-ema-keepmean | 49,008 | 0.8085 | [0.7927, 0.8194] | 0.681 | 0.088 | 0.442 | 0.873 | 0.760 | 0.799 |
 | conv-v2-rank-m | 99,930 | 0.8058 | [0.7793, 0.8054] | 0.723 | 0.155 | 0.354 | 0.871 | 0.769 | 0.789 |
 | conv-v3-base | 46,170 | 0.8024 | [0.7883, 0.8113] | 0.733 | 0.252 | 0.289 | 0.864 | 0.777 | 0.781 |
@@ -90,10 +90,10 @@ kiloVAD 0.862 at 200 ms, MarbleNet 0.850.
 
 ### Training duty cycle
 
-Retraining the unchanged v0.1 architecture on 44 h of call-shaped mixtures with a
+Retraining the unchanged baseline architecture on 44 h of call-shaped mixtures with a
 realistic speech duty cycle (~39%, versus FLEURS's ~95%):
 
-| | v0.1 reference | conv-v1-base | Δ |
+| | v0.1 baseline | conv-v1-base | Δ |
 |---|---:|---:|---:|
 | false-alarm rate | 0.358 | 0.157 | −0.201 |
 | clean-speech AUC | 0.861 | 0.912 | +0.051 |

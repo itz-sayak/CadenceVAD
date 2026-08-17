@@ -137,7 +137,7 @@ Full benchmark, strictly causal, 10 ms frames, no smoothing.
 | TEN VAD | — | 0.8966 | [0.8905, 0.9026] | 0.177 | 0.180 | 0.910 | 0.896 | 0.889 |
 | CadenceVAD conv-v3-m-rank | 99,930 | 0.8436 | [0.8242, 0.8494] | 0.164 | 0.270 | 0.909 | 0.806 | 0.827 |
 | CadenceVAD conv-v1-base | 46,170 | 0.8418 | [0.8300, 0.8536] | 0.157 | 0.292 | 0.912 | 0.796 | 0.827 |
-| v0.1 reference checkpoint | 46,170 | 0.8295 | [0.8187, 0.8408] | 0.358 | 0.181 | 0.861 | 0.814 | 0.820 |
+| v0.1 baseline checkpoint | 46,170 | 0.8295 | [0.8187, 0.8408] | 0.358 | 0.181 | 0.861 | 0.814 | 0.820 |
 
 The Silero and TEN rows are measurements made here. Strictly causal AVA-Speech
 numbers for either do not appear in the literature I reviewed, and both land above

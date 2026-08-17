@@ -1,54 +1,34 @@
 CadenceVAD
 Copyright 2026 Sayak Dutta
 
-CadenceVAD is authored by Sayak Dutta. New work in this repository includes the
-causal learnable modulation filterbank, the AVA-Speech single-protocol
-evaluation harness, the conversation-mixture data pipeline, the pairwise ranking
-objective, the causal running-normalisation input stage, and the portable
-low-latency C runtime for Windows, Linux and macOS.
+Authored by Sayak Dutta.
 
-DERIVED WORK
-------------
-CadenceVAD is derived from FlashVAD, Copyright 2026 Himanshu Maurya, used under
-the MIT License: https://github.com/oss-codes/flashvad
+THIRD-PARTY NOTICES
+-------------------
+Portions of this software are used under the MIT License,
+Copyright (c) 2026 Himanshu Maurya.
 
-The retained `cadencevad-v0.1` reference checkpoint is the FlashVAD v0.1
-checkpoint. It was trained by Himanshu Maurya, is redistributed here unmodified
-under CC BY 4.0, and is used only as a comparison baseline. It is not a
-CadenceVAD-trained model. See models/cadencevad-v0.1/MODEL_LICENSE.md.
+The bundled `cadencevad-v0.1` baseline checkpoint is third-party material
+redistributed unmodified under CC BY 4.0. It is retained only as a comparison
+baseline and is not a CadenceVAD-trained model.
+Attribution: FlashVAD v0.1 by Himanshu Maurya.
 
-THIRD-PARTY DATA AND MODELS
----------------------------
-The FlashVAD v0.1 reference checkpoint was trained using derived data from:
-
-- FLEURS, Google LLC, licensed under CC BY 4.0.
-  https://huggingface.co/datasets/google/fleurs
-- AMI Meeting Corpus, licensed under CC BY 4.0.
-  https://groups.inf.ed.ac.uk/ami/corpus/
-- MUSAN, David Snyder, Guoguo Chen, and Daniel Povey, licensed under CC BY 4.0.
-  https://www.openslr.org/17/
-
-Weak frame targets were generated with Silero VAD, distributed under the MIT
-License: https://github.com/snakers4/silero-vad
-
+TRAINING AND EVALUATION DATA
+----------------------------
 CadenceVAD models are trained on:
 
-- LibriSpeech, Vassil Panayotov et al., licensed under CC BY 4.0.
-  https://www.openslr.org/12/
-- MUSAN, licensed under CC BY 4.0. https://www.openslr.org/17/
+- LibriSpeech, Vassil Panayotov et al., CC BY 4.0. https://www.openslr.org/12/
+- MUSAN, David Snyder, Guoguo Chen, Daniel Povey, CC BY 4.0.
+  https://www.openslr.org/17/
 - Room impulse responses and isotropic noises (OpenSLR 28), CC BY 4.0.
   https://www.openslr.org/28/
 
 Frame targets are produced by an ensemble of Silero VAD (MIT) and FireRedVAD
 (Apache-2.0). Neither model's code nor weights are included here.
 
-EVALUATION MATERIALS
---------------------
-AVA-Speech annotations are Copyright Google LLC, licensed under CC BY 4.0.
+AVA-Speech annotations are Copyright Google LLC, CC BY 4.0.
 https://research.google.com/ava/
 Audio is obtained from a third-party Apache-2.0 mirror and is not redistributed.
 
-TEN VAD and FireRedVAD are used only as reference measurements. Their source
-code and weights are not included:
-https://github.com/TEN-framework/ten-vad
-https://github.com/FireRedTeam/FireRedVAD
+TEN VAD and FireRedVAD are used only as reference measurements; their source
+code and weights are not included.

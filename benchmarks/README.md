@@ -13,7 +13,7 @@ protocol block, adapter metadata, per-condition AUCs, per-clip AUCs, a
 | TEN VAD | — | 0.8966 | [0.8905, 0.9026] | 0.177 | 0.180 |
 | conv-v3-m-rank | 99,930 | 0.8436 | [0.8242, 0.8494] | 0.164 | 0.270 |
 | conv-v1-base | 46,170 | 0.8418 | [0.8300, 0.8536] | 0.157 | 0.292 |
-| v0.1 reference | 46,170 | 0.8295 | [0.8187, 0.8408] | 0.358 | 0.181 |
+| v0.1 baseline | 46,170 | 0.8295 | [0.8187, 0.8408] | 0.358 | 0.181 |
 
 Reproduce with `scripts/prepare_ava_speech.py` then
 `scripts/benchmark_ava_speech.py`; summarise with
@@ -49,11 +49,11 @@ manifest.
 - `clmf-ablation.jsonl`: modulation filterbank, three seeds per arm on matched
   data. +0.005 overall (0.3 SE), +0.016 on music (1.3 SE). Not significant.
 
-## `cadencevad-v0.1/` — upstream reference artifacts
+## `cadencevad-v0.1/` — baseline artifacts
 
-Retained evidence for the upstream FlashVAD v0.1 checkpoint, including its
+Retained evidence for the third-party v0.1 baseline checkpoint, including its
 exploratory TEN public-set evaluation and Apple M4 Pro runtime measurements. These
-describe the reference checkpoint, not a CadenceVAD-trained model.
+describe that baseline, not a CadenceVAD-trained model.
 
 The external-model harness is `scripts/benchmark_official_vads.py`. Its retained
 artifact records exact source revisions, artifact hashes, machine/runtime

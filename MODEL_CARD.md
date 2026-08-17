@@ -42,9 +42,8 @@ against a published causal state of the art of 0.886, and against Silero at
 ### Provenance of the bundled `cadencevad-v0.1` artifacts
 
 The `cadencevad-v0.1` files shipped in this repository are **not
-CadenceVAD-trained**. They are the FlashVAD v0.1 checkpoint by Himanshu Maurya,
-redistributed unmodified under CC BY 4.0 and retained only as a comparison
-baseline. See [`NOTICE`](NOTICE) and
+CadenceVAD-trained**. They are a third-party baseline checkpoint, redistributed
+unmodified under CC BY 4.0 and retained only for comparison. See [`NOTICE`](NOTICE) and
 [`MODEL_LICENSE.md`](MODEL_LICENSE.md). CadenceVAD-trained checkpoints are
 produced by `scripts/run_experiment_sweep.py` and are not distributed as release
 artifacts yet.
@@ -59,7 +58,7 @@ Full AVA-Speech, 39.667 h, strictly causal, 10 ms frames, no smoothing, with
 |---|---:|---:|---|---:|---:|---:|---:|---:|
 | CadenceVAD conv-v3-m-rank | 99,930 | 0.8436 | [0.8242, 0.8494] | 0.164 | 0.270 | 0.909 | 0.806 | 0.827 |
 | CadenceVAD conv-v1-base | 46,170 | 0.8418 | [0.8300, 0.8536] | 0.157 | 0.292 | 0.912 | 0.796 | 0.827 |
-| v0.1 reference (upstream) | 46,170 | 0.8295 | [0.8187, 0.8408] | 0.358 | 0.181 | 0.861 | 0.814 | 0.820 |
+| v0.1 baseline | 46,170 | 0.8295 | [0.8187, 0.8408] | 0.358 | 0.181 | 0.861 | 0.814 | 0.820 |
 | *Silero VAD, same harness* | — | *0.9022* | *[0.8910, 0.9127]* | *0.140* | *0.186* | *0.956* | *0.859* | *0.895* |
 | *TEN VAD, same harness* | — | *0.8966* | *[0.8905, 0.9026]* | *0.177* | *0.180* | *0.910* | *0.896* | *0.889* |
 
@@ -170,10 +169,10 @@ development split only.
 
 ### Secondary: TEN VAD public set
 
-The upstream v0.1 reference checkpoint was repeatedly inspected on TEN VAD's
-public 30-recording set during its original development, giving 0.882 ROC-AUC,
+The v0.1 baseline checkpoint was repeatedly inspected on TEN VAD's public
+30-recording set during its original development, giving 0.882 ROC-AUC,
 0.889 hysteresis-decision F1, a 26.3% false-alarm rate and a 13.0% miss rate over
-26,243 frames. Because that set influenced research decisions upstream, those are
+26,243 frames. Because that set influenced those research decisions, they are
 exploratory external-set numbers, not an untouched test. Language is recorded as
 `und`; codec, channel, device and SNR are unknown.
 

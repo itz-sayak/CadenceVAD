@@ -6,9 +6,6 @@ that runs the whole frontend and model in **9.02 µs per hop** on one x86-64 cor
 
 Created by **Sayak Dutta**.
 
-Derived from [FlashVAD](https://github.com/oss-codes/flashvad) by Himanshu Maurya,
-used under the MIT License; see [`NOTICE`](NOTICE).
-
 The name refers to speech cadence: the model carries a learnable
 modulation-domain filterbank tuned to the 4–8 Hz syllabic rate that separates
 speech from sustained music and stationary noise.
@@ -56,7 +53,7 @@ causal frontend plus the model for one 10 ms hop.
 | **portable + AVX2** | **9.02 µs** | 9.05 µs | 9.83 µs | 0.00090 | 20,064 B |
 | portable, scalar fallback | 27.06 µs | 28.33 µs | 30.21 µs | 0.00271 | 20,064 B |
 
-For reference, the upstream Apple Accelerate runtime measured 11.417 µs p50 on an
+For reference, an Apple Accelerate baseline runtime measured 11.417 µs p50 on an
 M4 Pro. The portable AVX2 build is faster than that while depending on nothing but
 a C11 compiler.
 
@@ -91,7 +88,7 @@ clip-level bootstraps. Protocol details: [`docs/AVA_SPEECH.md`](docs/AVA_SPEECH.
 | TEN VAD | — | 0.8966 | [0.891, 0.903] | 0.828 | 0.177 | 0.180 | 0.910 | 0.896 | 0.889 |
 | CadenceVAD conv-v3-m-rank | 99,930 | 0.8436 | [0.824, 0.849] | 0.777 | 0.164 | 0.270 | 0.909 | 0.806 | 0.827 |
 | **CadenceVAD conv-v1-base** | 46,170 | **0.8418** | [0.830, 0.854] | 0.765 | **0.157** | 0.292 | 0.912 | 0.796 | 0.827 |
-| v0.1 reference checkpoint | 46,170 | 0.8295 | [0.819, 0.841] | 0.764 | 0.358 | 0.181 | 0.861 | 0.814 | 0.820 |
+| v0.1 baseline checkpoint | 46,170 | 0.8295 | [0.819, 0.841] | 0.764 | 0.358 | 0.181 | 0.861 | 0.814 | 0.820 |
 
 The Silero and TEN rows are our own measurements. I could not find strictly causal
 AVA-Speech numbers for either model published anywhere, and they are supplied here
@@ -119,7 +116,7 @@ Training on call-shaped audio instead of read speech is the one large, unambiguo
 effect measured so far. Retraining the unchanged architecture on 44 h of mixtures
 with a realistic speech duty cycle (~39% rather than FLEURS's ~95%):
 
-| | v0.1 reference | conv-v1-base | Δ |
+| | v0.1 baseline | conv-v1-base | Δ |
 |---|---:|---:|---:|
 | false-alarm rate | 0.358 | **0.157** | **−0.201** |
 | clean-speech AUC | 0.861 | **0.912** | +0.051 |
@@ -213,8 +210,7 @@ stability, semantic completion, interruption state and a timeout policy.
 ## Licences
 
 Source code is MIT. Model artifacts are CC BY 4.0; see
-[`MODEL_LICENSE.md`](MODEL_LICENSE.md) and [`NOTICE`](NOTICE). The retained
-`cadencevad-v0.1` checkpoint is the upstream FlashVAD v0.1 checkpoint,
-redistributed under CC BY 4.0 as a comparison baseline — it is not a
-CadenceVAD-trained model. Third-party datasets, models and benchmarks retain their
-own terms.
+[`MODEL_LICENSE.md`](MODEL_LICENSE.md) and [`NOTICE`](NOTICE). The bundled
+`cadencevad-v0.1` checkpoint is a third-party baseline redistributed under
+CC BY 4.0, not a CadenceVAD-trained model. Third-party datasets, models and
+benchmarks retain their own terms.
