@@ -5,13 +5,10 @@ Authored by Sayak Dutta.
 
 THIRD-PARTY NOTICES
 -------------------
-Portions of this software are used under the MIT License,
-Copyright (c) 2026 Himanshu Maurya.
 
 The bundled `cadencevad-v0.1` baseline checkpoint is third-party material
 redistributed unmodified under CC BY 4.0. It is retained only as a comparison
 baseline and is not a CadenceVAD-trained model.
-Attribution: FlashVAD v0.1 by Himanshu Maurya.
 
 TRAINING AND EVALUATION DATA
 ----------------------------
