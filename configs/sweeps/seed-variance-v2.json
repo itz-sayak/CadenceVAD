@@ -1,0 +1,55 @@
+{
+  "base_config": "configs/study-base-v2.json",
+  "cells": [
+    {
+      "cell": "seedvar2-s101",
+      "group": "seed-variance-v2",
+      "variable": 101,
+      "overrides": {
+        "seed": 101
+      },
+      "train_manifest": "/home/seema/VAD-data/duty-0.45/train.jsonl",
+      "valid_manifest": "/home/seema/VAD-data/duty-0.45/valid.jsonl"
+    },
+    {
+      "cell": "seedvar2-s202",
+      "group": "seed-variance-v2",
+      "variable": 202,
+      "overrides": {
+        "seed": 202
+      },
+      "train_manifest": "/home/seema/VAD-data/duty-0.45/train.jsonl",
+      "valid_manifest": "/home/seema/VAD-data/duty-0.45/valid.jsonl"
+    },
+    {
+      "cell": "seedvar2-s303",
+      "group": "seed-variance-v2",
+      "variable": 303,
+      "overrides": {
+        "seed": 303
+      },
+      "train_manifest": "/home/seema/VAD-data/duty-0.45/train.jsonl",
+      "valid_manifest": "/home/seema/VAD-data/duty-0.45/valid.jsonl"
+    },
+    {
+      "cell": "seedvar2-s404",
+      "group": "seed-variance-v2",
+      "variable": 404,
+      "overrides": {
+        "seed": 404
+      },
+      "train_manifest": "/home/seema/VAD-data/duty-0.45/train.jsonl",
+      "valid_manifest": "/home/seema/VAD-data/duty-0.45/valid.jsonl"
+    },
+    {
+      "cell": "seedvar2-s505",
+      "group": "seed-variance-v2",
+      "variable": 505,
+      "overrides": {
+        "seed": 505
+      },
+      "train_manifest": "/home/seema/VAD-data/duty-0.45/train.jsonl",
+      "valid_manifest": "/home/seema/VAD-data/duty-0.45/valid.jsonl"
+    }
+  ]
+}

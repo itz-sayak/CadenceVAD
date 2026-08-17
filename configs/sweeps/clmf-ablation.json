@@ -1,0 +1,74 @@
+{
+  "base_config": "configs/study-base.json",
+  "cells": [
+    {
+      "cell": "abl-base-s101",
+      "group": "clmf-ablation",
+      "variable": "base",
+      "overrides": {
+        "seed": 101
+      },
+      "train_manifest": "/home/seema/VAD-data/mixtures-v1/train.jsonl",
+      "valid_manifest": "/home/seema/VAD-data/mixtures-v1/valid.jsonl"
+    },
+    {
+      "cell": "abl-clmf-s101",
+      "group": "clmf-ablation",
+      "variable": "clmf",
+      "overrides": {
+        "seed": 101,
+        "model": {
+          "modulation": true
+        }
+      },
+      "train_manifest": "/home/seema/VAD-data/mixtures-v1/train.jsonl",
+      "valid_manifest": "/home/seema/VAD-data/mixtures-v1/valid.jsonl"
+    },
+    {
+      "cell": "abl-base-s202",
+      "group": "clmf-ablation",
+      "variable": "base",
+      "overrides": {
+        "seed": 202
+      },
+      "train_manifest": "/home/seema/VAD-data/mixtures-v1/train.jsonl",
+      "valid_manifest": "/home/seema/VAD-data/mixtures-v1/valid.jsonl"
+    },
+    {
+      "cell": "abl-clmf-s202",
+      "group": "clmf-ablation",
+      "variable": "clmf",
+      "overrides": {
+        "seed": 202,
+        "model": {
+          "modulation": true
+        }
+      },
+      "train_manifest": "/home/seema/VAD-data/mixtures-v1/train.jsonl",
+      "valid_manifest": "/home/seema/VAD-data/mixtures-v1/valid.jsonl"
+    },
+    {
+      "cell": "abl-base-s303",
+      "group": "clmf-ablation",
+      "variable": "base",
+      "overrides": {
+        "seed": 303
+      },
+      "train_manifest": "/home/seema/VAD-data/mixtures-v1/train.jsonl",
+      "valid_manifest": "/home/seema/VAD-data/mixtures-v1/valid.jsonl"
+    },
+    {
+      "cell": "abl-clmf-s303",
+      "group": "clmf-ablation",
+      "variable": "clmf",
+      "overrides": {
+        "seed": 303,
+        "model": {
+          "modulation": true
+        }
+      },
+      "train_manifest": "/home/seema/VAD-data/mixtures-v1/train.jsonl",
+      "valid_manifest": "/home/seema/VAD-data/mixtures-v1/valid.jsonl"
+    }
+  ]
+}

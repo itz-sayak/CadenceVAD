@@ -1,0 +1,47 @@
+.DS_Store
+.venv/
+.uv-cache/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+dist/
+build/
+*.egg-info/
+
+# Local datasets, experiments, and generated native products
+artifacts/
+data/
+checkpoints/
+demo-audio/
+
+# Local paper, arXiv, and publication drafts
+paper/
+papers/
+arxiv/
+arxiv-submission/
+manuscript/
+submission/
+research-paper/
+VAD_RESEARCH.md
+*.tex
+*.bib
+*.pdf
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# Local agent and editor state
+.omo/
+.openai/
+.env
+.env.*
+
+# Report-site dependencies and build output
+report-site/node_modules/
+report-site/dist/
+report-site/.astro/
+report-site/coverage/

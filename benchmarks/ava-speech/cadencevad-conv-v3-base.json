@@ -1,0 +1,1080 @@
+{
+  "schema": "cadencevad-ava-speech-evaluation-v1",
+  "evaluated_utc": "2026-08-16T13:34:06.012876+00:00",
+  "model": "cadencevad-conv-v3-base",
+  "adapter": {
+    "adapter": "cadencevad-torch:best",
+    "native_hop_ms": 10.0,
+    "causal": true,
+    "scope": "causal frontend + model, offline-batched streaming-equivalent",
+    "parameters": 46170
+  },
+  "protocol": {
+    "benchmark": "AVA-Speech",
+    "task": "frame-level speech vs non-speech",
+    "hop_ms": 10.0,
+    "positive_classes": [
+      "CLEAN_SPEECH",
+      "SPEECH_WITH_MUSIC",
+      "SPEECH_WITH_NOISE"
+    ],
+    "negative_class": "NO_SPEECH",
+    "streaming": "each clip is processed end to end with a single model state; frames are sliced by condition only after inference",
+    "threshold_policy": "best-F1 threshold selected on the pooled overall subset and then reused unchanged for every per-condition subset",
+    "smoothing": "none",
+    "uncovered_frames_excluded": 179
+  },
+  "dataset": {
+    "path": "/home/seema/VAD-data/ava-speech",
+    "items": 160,
+    "audio_hours": 39.667,
+    "coverage": {
+      "ava_segment_start_seconds": 900.0,
+      "audio_hours": 39.667,
+      "nominal_benchmark_hours": 40.0,
+      "fraction_of_nominal": 0.99167,
+      "full_length_clips": 158,
+      "truncated_clips": 2,
+      "note": "AVA-Speech annotates seconds 900-1800 of 160 source videos (40 h nominal). This mirror ships full 900 s audio for most clips and a 300 s excerpt for the rest; see full_length_clips/truncated_clips. State the realised hours alongside any published comparison."
+    },
+    "label_sha256": "9936403f9abcb9e768d1b6889ceeadb6d6797d70c39cf9cf1062cdc2f3577377",
+    "audio_mirror_revision": "fefdf18c196e4b3de0c2cf84652e3983efb8530d"
+  },
+  "overall": {
+    "frames": 14279821,
+    "positives": 7483597,
+    "negatives": 6796224,
+    "speech_fraction": 0.5240679837653427,
+    "roc_auc": 0.8023656550049226,
+    "pr_auc": 0.8518515948180978,
+    "threshold": 0.05,
+    "accuracy": 0.7287176078747766,
+    "precision": 0.7566144968483844,
+    "recall": 0.7110958807642902,
+    "f1": 0.7331493464133777,
+    "false_alarm_rate": 0.25187839600342776,
+    "miss_rate": 0.2889041192357098
+  },
+  "per_condition": {
+    "CLEAN_SPEECH": {
+      "frames": 8806840,
+      "positives": 2010616,
+      "negatives": 6796224,
+      "speech_fraction": 0.22830163827207034,
+      "roc_auc": 0.8644186959976264,
+      "pr_auc": 0.7785805082614643,
+      "threshold": 0.05,
+      "accuracy": 0.7589984602876855,
+      "precision": 0.4831140063494211,
+      "recall": 0.7957640842408495,
+      "f1": 0.6012219267422639,
+      "false_alarm_rate": 0.25187839600342776,
+      "miss_rate": 0.20423591575915043
+    },
+    "SPEECH_WITH_MUSIC": {
+      "frames": 8703610,
+      "positives": 1907386,
+      "negatives": 6796224,
+      "speech_fraction": 0.21914883594278695,
+      "roc_auc": 0.7773892945764692,
+      "pr_auc": 0.6291017521783064,
+      "threshold": 0.05,
+      "accuracy": 0.7315598929639541,
+      "precision": 0.42836982974869703,
+      "recall": 0.6725487132651702,
+      "f1": 0.5233803711043085,
+      "false_alarm_rate": 0.25187839600342776,
+      "miss_rate": 0.32745128673482976
+    },
+    "SPEECH_WITH_NOISE": {
+      "frames": 10361819,
+      "positives": 3565595,
+      "negatives": 6796224,
+      "speech_fraction": 0.3441089831814279,
+      "roc_auc": 0.7807352463756756,
+      "pr_auc": 0.7425300604723537,
+      "threshold": 0.05,
+      "accuracy": 0.7260473281766454,
+      "precision": 0.5875715048772573,
+      "recall": 0.6839725207153364,
+      "f1": 0.6321177327762706,
+      "false_alarm_rate": 0.25187839600342776,
+      "miss_rate": 0.31602747928466357
+    }
+  },
+  "overall_roc_auc_ci95": {
+    "lower": 0.788319379460428,
+    "upper": 0.8112903418595453,
+    "mean": 0.7995832740566516,
+    "iterations": 1000,
+    "method": "item bootstrap, 8192-bin histogram AUC"
+  },
+  "throughput": {
+    "audio_seconds": 142800.0,
+    "compute_seconds": 13.59,
+    "real_time_factor": 9.5e-05,
+    "note": "wall-clock of this harness only; not a latency measurement"
+  },
+  "per_clip": [
+    {
+      "video_id": "-5KQ66BBWC4",
+      "frames": 90000,
+      "speech_fraction": 0.20181559590213116,
+      "roc_auc": 0.8122824965072232
+    },
+    {
+      "video_id": "-FaXLcSFjUI",
+      "frames": 90000,
+      "speech_fraction": 0.15728127291717595,
+      "roc_auc": 0.8449493292938298
+    },
+    {
+      "video_id": "-IELREHX_js",
+      "frames": 90000,
+      "speech_fraction": 0.3510111111111111,
+      "roc_auc": 0.8316489778031327
+    },
+    {
+      "video_id": "053oq2xB3oU",
+      "frames": 90000,
+      "speech_fraction": 0.6668777777777778,
+      "roc_auc": 0.7371827170953918
+    },
+    {
+      "video_id": "0f39OWEqJ24",
+      "frames": 90000,
+      "speech_fraction": 0.24430542900953356,
+      "roc_auc": 0.8516995152953545
+    },
+    {
+      "video_id": "1j20qq1JyX4",
+      "frames": 90000,
+      "speech_fraction": 0.6160248005511234,
+      "roc_auc": 0.788898149080722
+    },
+    {
+      "video_id": "20TAGRElvfE",
+      "frames": 90000,
+      "speech_fraction": 0.5783444444444444,
+      "roc_auc": 0.9091640394027328
+    },
+    {
+      "video_id": "26V9UzqSguo",
+      "frames": 90000,
+      "speech_fraction": 0.3275666666666667,
+      "roc_auc": 0.7438826171189846
+    },
+    {
+      "video_id": "2DUITARAsWQ",
+      "frames": 90000,
+      "speech_fraction": 0.5559666666666667,
+      "roc_auc": 0.8538595489834232
+    },
+    {
+      "video_id": "2PpxiG0WU18",
+      "frames": 90000,
+      "speech_fraction": 0.2766283695193226,
+      "roc_auc": 0.8642445692572083
+    },
+    {
+      "video_id": "2XeFK-DTSZk",
+      "frames": 90000,
+      "speech_fraction": 0.31947376608369077,
+      "roc_auc": 0.806169495895304
+    },
+    {
+      "video_id": "2bxKkUgcqpk",
+      "frames": 90000,
+      "speech_fraction": 0.4935,
+      "roc_auc": 0.7630244639739178
+    },
+    {
+      "video_id": "2fwni_Kjf2M",
+      "frames": 90000,
+      "speech_fraction": 0.5275,
+      "roc_auc": 0.6826565082832358
+    },
+    {
+      "video_id": "2qQs3Y9OJX0",
+      "frames": 90000,
+      "speech_fraction": 0.5385111111111112,
+      "roc_auc": 0.8393702467734558
+    },
+    {
+      "video_id": "32HR3MnDZ8g",
+      "frames": 90000,
+      "speech_fraction": 0.4352666666666667,
+      "roc_auc": 0.865957665725617
+    },
+    {
+      "video_id": "4ZpjKfu6Cl8",
+      "frames": 90000,
+      "speech_fraction": 0.5944132091824262,
+      "roc_auc": 0.8416882837416834
+    },
+    {
+      "video_id": "4gVsDd8PV9U",
+      "frames": 90000,
+      "speech_fraction": 0.3362519167092602,
+      "roc_auc": 0.8039447542597425
+    },
+    {
+      "video_id": "55Ihr6uVIDA",
+      "frames": 90000,
+      "speech_fraction": 0.2717838174181649,
+      "roc_auc": 0.8075733409467751
+    },
+    {
+      "video_id": "5BDj0ow5hnA",
+      "frames": 90000,
+      "speech_fraction": 0.7848444444444445,
+      "roc_auc": 0.7313460587307209
+    },
+    {
+      "video_id": "5YPjcdLbs5g",
+      "frames": 90000,
+      "speech_fraction": 0.6050444444444445,
+      "roc_auc": 0.7607644786785227
+    },
+    {
+      "video_id": "5milLu-6bWI",
+      "frames": 90000,
+      "speech_fraction": 0.7284777777777778,
+      "roc_auc": 0.7341905728319105
+    },
+    {
+      "video_id": "6d5u6FHvz7Q",
+      "frames": 90000,
+      "speech_fraction": 0.4848222222222222,
+      "roc_auc": 0.7845425989974593
+    },
+    {
+      "video_id": "7YpF6DntOYw",
+      "frames": 90000,
+      "speech_fraction": 0.31524444444444444,
+      "roc_auc": 0.7554361005012625
+    },
+    {
+      "video_id": "7nHkh4sP5Ks",
+      "frames": 90000,
+      "speech_fraction": 0.5847444444444444,
+      "roc_auc": 0.9369534000500239
+    },
+    {
+      "video_id": "8VZEwOCQ8bc",
+      "frames": 90000,
+      "speech_fraction": 0.46586666666666665,
+      "roc_auc": 0.8558376465901224
+    },
+    {
+      "video_id": "8aMv-ZGD4ic",
+      "frames": 90000,
+      "speech_fraction": 0.8083888888888889,
+      "roc_auc": 0.6473638114581602
+    },
+    {
+      "video_id": "8nO5FFbIAog",
+      "frames": 90000,
+      "speech_fraction": 0.41234444444444446,
+      "roc_auc": 0.832206327474027
+    },
+    {
+      "video_id": "914yZXz-iRs",
+      "frames": 90000,
+      "speech_fraction": 0.49364444444444444,
+      "roc_auc": 0.7494953179635124
+    },
+    {
+      "video_id": "9F2voT6QWvQ",
+      "frames": 90000,
+      "speech_fraction": 0.48281533008122857,
+      "roc_auc": 0.836284725210613
+    },
+    {
+      "video_id": "9Y_l9NsnYE0",
+      "frames": 90000,
+      "speech_fraction": 0.6440555555555556,
+      "roc_auc": 0.9128137285580978
+    },
+    {
+      "video_id": "9bK05eBt1GM",
+      "frames": 90000,
+      "speech_fraction": 0.7777333333333334,
+      "roc_auc": 0.7243291548273578
+    },
+    {
+      "video_id": "9mLYmkonWZQ",
+      "frames": 90000,
+      "speech_fraction": 0.2504,
+      "roc_auc": 0.7978686533789635
+    },
+    {
+      "video_id": "AN07xQokfiE",
+      "frames": 90000,
+      "speech_fraction": 0.5919444444444445,
+      "roc_auc": 0.887271967414155
+    },
+    {
+      "video_id": "AYebXQ8eUkM",
+      "frames": 90000,
+      "speech_fraction": 0.6313111111111112,
+      "roc_auc": 0.8141945449801354
+    },
+    {
+      "video_id": "Ag-pXiLrd48",
+      "frames": 90000,
+      "speech_fraction": 0.4074872490082562,
+      "roc_auc": 0.8682539529164823
+    },
+    {
+      "video_id": "B1MAUxpKaV8",
+      "frames": 90000,
+      "speech_fraction": 0.643194470681053,
+      "roc_auc": 0.8274511527788853
+    },
+    {
+      "video_id": "BCiuXAuCKAU",
+      "frames": 90000,
+      "speech_fraction": 0.6182925338637449,
+      "roc_auc": 0.8152401338147403
+    },
+    {
+      "video_id": "BY3sZmvUp-0",
+      "frames": 90000,
+      "speech_fraction": 0.6928,
+      "roc_auc": 0.7577890962001724
+    },
+    {
+      "video_id": "C25wkwAMB-w",
+      "frames": 90000,
+      "speech_fraction": 0.48795555555555553,
+      "roc_auc": 0.9113453045768962
+    },
+    {
+      "video_id": "CZ2NP8UsPuE",
+      "frames": 90000,
+      "speech_fraction": 0.6201333333333333,
+      "roc_auc": 0.8732181909589994
+    },
+    {
+      "video_id": "CrlfWnsS7ac",
+      "frames": 90000,
+      "speech_fraction": 0.5248963808296201,
+      "roc_auc": 0.8429974862189682
+    },
+    {
+      "video_id": "Db19rWN5BGo",
+      "frames": 90000,
+      "speech_fraction": 0.6243777777777778,
+      "roc_auc": 0.715151158652382
+    },
+    {
+      "video_id": "Di1MG6auDYo",
+      "frames": 90000,
+      "speech_fraction": 0.6295,
+      "roc_auc": 0.8783858302493254
+    },
+    {
+      "video_id": "E7JcKooKVsM",
+      "frames": 90000,
+      "speech_fraction": 0.6885444444444444,
+      "roc_auc": 0.8986844333197128
+    },
+    {
+      "video_id": "Ekwy7wzLfjc",
+      "frames": 90000,
+      "speech_fraction": 0.38235555555555556,
+      "roc_auc": 0.8143220834680577
+    },
+    {
+      "video_id": "F3dPH6Xqf5M",
+      "frames": 90000,
+      "speech_fraction": 0.7105111111111111,
+      "roc_auc": 0.709471828802374
+    },
+    {
+      "video_id": "G5Yr20A5z_Q",
+      "frames": 90000,
+      "speech_fraction": 0.4717222222222222,
+      "roc_auc": 0.9253479586973737
+    },
+    {
+      "video_id": "Gvp-cj3bmIY",
+      "frames": 90000,
+      "speech_fraction": 0.6548666666666667,
+      "roc_auc": 0.7813545729842962
+    },
+    {
+      "video_id": "HKjR70GCRPE",
+      "frames": 90000,
+      "speech_fraction": 0.6226333333333334,
+      "roc_auc": 0.8690124113870065
+    },
+    {
+      "video_id": "HV0H6oc4Kvs",
+      "frames": 90000,
+      "speech_fraction": 0.731693491019029,
+      "roc_auc": 0.8553533238895427
+    },
+    {
+      "video_id": "Hi8QeP_VPu0",
+      "frames": 90000,
+      "speech_fraction": 0.5839,
+      "roc_auc": 0.8485654235772462
+    },
+    {
+      "video_id": "HymKCzQJbB8",
+      "frames": 90000,
+      "speech_fraction": 0.42464444444444444,
+      "roc_auc": 0.7421965194180794
+    },
+    {
+      "video_id": "IKdBLciu_-A",
+      "frames": 90000,
+      "speech_fraction": 0.4257444444444444,
+      "roc_auc": 0.8374009863412621
+    },
+    {
+      "video_id": "IzvOYVMltkI",
+      "frames": 90000,
+      "speech_fraction": 0.7339111111111111,
+      "roc_auc": 0.7827304427336158
+    },
+    {
+      "video_id": "J1jDc2rTJlg",
+      "frames": 90000,
+      "speech_fraction": 0.44964444444444446,
+      "roc_auc": 0.8000627942880939
+    },
+    {
+      "video_id": "J4bt4y9ShTA",
+      "frames": 90000,
+      "speech_fraction": 0.5466777777777778,
+      "roc_auc": 0.824970528742932
+    },
+    {
+      "video_id": "JNb4nWexD0I",
+      "frames": 90000,
+      "speech_fraction": 0.5096111111111111,
+      "roc_auc": 0.9228940441462624
+    },
+    {
+      "video_id": "KHHgQ_Pe4cI",
+      "frames": 90000,
+      "speech_fraction": 0.5512789173092736,
+      "roc_auc": 0.7910165848915434
+    },
+    {
+      "video_id": "KVq6If6ozMY",
+      "frames": 90000,
+      "speech_fraction": 0.47315555555555555,
+      "roc_auc": 0.86396484279973
+    },
+    {
+      "video_id": "KWoSGtglCms",
+      "frames": 90000,
+      "speech_fraction": 0.4731111111111111,
+      "roc_auc": 0.7653339599026042
+    },
+    {
+      "video_id": "K_SpqDJnlps",
+      "frames": 90000,
+      "speech_fraction": 0.5479343985421898,
+      "roc_auc": 0.8010423977571782
+    },
+    {
+      "video_id": "Kb1fduj-jdY",
+      "frames": 90000,
+      "speech_fraction": 0.783,
+      "roc_auc": 0.7386841807740886
+    },
+    {
+      "video_id": "Ksd1JQFHYWA",
+      "frames": 90000,
+      "speech_fraction": 0.8701222222222222,
+      "roc_auc": 0.7467768478443958
+    },
+    {
+      "video_id": "LgBQlW6OTr0",
+      "frames": 90000,
+      "speech_fraction": 0.28835555555555553,
+      "roc_auc": 0.8495843556532855
+    },
+    {
+      "video_id": "Ma2hgTmveKQ",
+      "frames": 90000,
+      "speech_fraction": 0.38966421476032803,
+      "roc_auc": 0.695337649422546
+    },
+    {
+      "video_id": "N0Dt9i9IUNg",
+      "frames": 90000,
+      "speech_fraction": 0.3816751483366297,
+      "roc_auc": 0.8895879017140805
+    },
+    {
+      "video_id": "N1K2bEZLL_A",
+      "frames": 90000,
+      "speech_fraction": 0.5966666666666667,
+      "roc_auc": 0.9070708058235991
+    },
+    {
+      "video_id": "N5UD8FGzDek",
+      "frames": 90000,
+      "speech_fraction": 0.6522666666666667,
+      "roc_auc": 0.817046603665417
+    },
+    {
+      "video_id": "NEQ7Wpf-EtI",
+      "frames": 90000,
+      "speech_fraction": 0.5735666666666667,
+      "roc_auc": 0.8128226514018885
+    },
+    {
+      "video_id": "OGNnUvJq9RI",
+      "frames": 90000,
+      "speech_fraction": 0.45924444444444446,
+      "roc_auc": 0.7225396114972628
+    },
+    {
+      "video_id": "O_NYCUhZ9zw",
+      "frames": 90000,
+      "speech_fraction": 0.5522888888888889,
+      "roc_auc": 0.8599986653842058
+    },
+    {
+      "video_id": "OfMdakd4bHI",
+      "frames": 90000,
+      "speech_fraction": 0.5426666666666666,
+      "roc_auc": 0.8709996073133828
+    },
+    {
+      "video_id": "Ov0za6Xb1LM",
+      "frames": 90000,
+      "speech_fraction": 0.5156222222222222,
+      "roc_auc": 0.8021061772182456
+    },
+    {
+      "video_id": "P60OxWahxBQ",
+      "frames": 90000,
+      "speech_fraction": 0.6175026111691371,
+      "roc_auc": 0.7819076878177583
+    },
+    {
+      "video_id": "P90hF2S1JzA",
+      "frames": 90000,
+      "speech_fraction": 0.6988266405920132,
+      "roc_auc": 0.6990445243195861
+    },
+    {
+      "video_id": "PNZQ2UJfyQE",
+      "frames": 90000,
+      "speech_fraction": 0.5533888888888889,
+      "roc_auc": 0.8450741938840742
+    },
+    {
+      "video_id": "PmElx9ZVByw",
+      "frames": 90000,
+      "speech_fraction": 0.5715222222222223,
+      "roc_auc": 0.8233102245085908
+    },
+    {
+      "video_id": "QCLQYnt3aMo",
+      "frames": 90000,
+      "speech_fraction": 0.6144888888888889,
+      "roc_auc": 0.8679144425932955
+    },
+    {
+      "video_id": "QMwT7DFA5O4",
+      "frames": 90000,
+      "speech_fraction": 0.6309555555555556,
+      "roc_auc": 0.7289035243830788
+    },
+    {
+      "video_id": "Riu4ZKk4YdQ",
+      "frames": 90000,
+      "speech_fraction": 0.6019222222222222,
+      "roc_auc": 0.8113427299061168
+    },
+    {
+      "video_id": "S0tkhGJjwLA",
+      "frames": 90000,
+      "speech_fraction": 0.333,
+      "roc_auc": 0.8545785851930002
+    },
+    {
+      "video_id": "T-Fc9ctuNVI",
+      "frames": 90000,
+      "speech_fraction": 0.7162333333333334,
+      "roc_auc": 0.8547874153961643
+    },
+    {
+      "video_id": "TzaVHtLXOzY",
+      "frames": 90000,
+      "speech_fraction": 0.14406666666666668,
+      "roc_auc": 0.830431013349951
+    },
+    {
+      "video_id": "U6m3kNFjdTs",
+      "frames": 90000,
+      "speech_fraction": 0.5776111111111111,
+      "roc_auc": 0.765899193318179
+    },
+    {
+      "video_id": "UOyyTUX5Vo4",
+      "frames": 90000,
+      "speech_fraction": 0.3050777777777778,
+      "roc_auc": 0.8637114570154427
+    },
+    {
+      "video_id": "U_WzY2k8IBM",
+      "frames": 90000,
+      "speech_fraction": 0.20654444444444445,
+      "roc_auc": 0.7851762943119696
+    },
+    {
+      "video_id": "UgZFdrNT6W0",
+      "frames": 90000,
+      "speech_fraction": 0.30783333333333335,
+      "roc_auc": 0.7578826241101312
+    },
+    {
+      "video_id": "UrsCy6qIGoo",
+      "frames": 90000,
+      "speech_fraction": 0.5561666666666667,
+      "roc_auc": 0.8573076830407068
+    },
+    {
+      "video_id": "Vmef_8MY46w",
+      "frames": 90000,
+      "speech_fraction": 0.5286222222222222,
+      "roc_auc": 0.7964982382188717
+    },
+    {
+      "video_id": "VsYPP2I0aUQ",
+      "frames": 90000,
+      "speech_fraction": 0.8281628480632903,
+      "roc_auc": 0.7069428679543146
+    },
+    {
+      "video_id": "WVde9pyaHg4",
+      "frames": 90000,
+      "speech_fraction": 0.16704444444444444,
+      "roc_auc": 0.887940754063309
+    },
+    {
+      "video_id": "WlgxRNCHQzw",
+      "frames": 90000,
+      "speech_fraction": 0.47933333333333333,
+      "roc_auc": 0.8108382763460973
+    },
+    {
+      "video_id": "WwoTG3_OjUg",
+      "frames": 90000,
+      "speech_fraction": 0.3947555555555556,
+      "roc_auc": 0.8275574899704912
+    },
+    {
+      "video_id": "XV_FF3WC7kA",
+      "frames": 90000,
+      "speech_fraction": 0.4794,
+      "roc_auc": 0.6714535513755061
+    },
+    {
+      "video_id": "ZFQ3lF6yq_E",
+      "frames": 90000,
+      "speech_fraction": 0.5118333333333334,
+      "roc_auc": 0.8880029054792431
+    },
+    {
+      "video_id": "_7oWZq_s_Sk",
+      "frames": 90000,
+      "speech_fraction": 0.6002688948643303,
+      "roc_auc": 0.8213734288681023
+    },
+    {
+      "video_id": "_a9SWtcaNj8",
+      "frames": 90000,
+      "speech_fraction": 0.3958976866152581,
+      "roc_auc": 0.8197622367303611
+    },
+    {
+      "video_id": "_mAfwH6i90E",
+      "frames": 90000,
+      "speech_fraction": 0.3438222222222222,
+      "roc_auc": 0.8905653027378252
+    },
+    {
+      "video_id": "a5mEmM6w_ks",
+      "frames": 90000,
+      "speech_fraction": 0.6857666666666666,
+      "roc_auc": 0.8405438589603343
+    },
+    {
+      "video_id": "ax3q-RkVIt4",
+      "frames": 90000,
+      "speech_fraction": 0.8451444444444445,
+      "roc_auc": 0.7922056688032377
+    },
+    {
+      "video_id": "b5pRYl_djbs",
+      "frames": 90000,
+      "speech_fraction": 0.4751,
+      "roc_auc": 0.8481872900116588
+    },
+    {
+      "video_id": "bhlFavrh7WU",
+      "frames": 90000,
+      "speech_fraction": 0.8300888888888889,
+      "roc_auc": 0.6013218032088968
+    },
+    {
+      "video_id": "c9pEMjPT16M",
+      "frames": 90000,
+      "speech_fraction": 0.4023533856307918,
+      "roc_auc": 0.8547544355461686
+    },
+    {
+      "video_id": "cKA-qeZuH_w",
+      "frames": 90000,
+      "speech_fraction": 0.6602111111111111,
+      "roc_auc": 0.7355205634092675
+    },
+    {
+      "video_id": "cWYJHb25EVs",
+      "frames": 90000,
+      "speech_fraction": 0.4387666666666667,
+      "roc_auc": 0.8606837949025805
+    },
+    {
+      "video_id": "fD6VkIRlIRI",
+      "frames": 90000,
+      "speech_fraction": 0.3038178626191693,
+      "roc_auc": 0.7959507258118799
+    },
+    {
+      "video_id": "fNcxxBjEOgw",
+      "frames": 90000,
+      "speech_fraction": 0.6551666666666667,
+      "roc_auc": 0.7176859343628179
+    },
+    {
+      "video_id": "fpprSy6AzKk",
+      "frames": 90000,
+      "speech_fraction": 0.547823284961888,
+      "roc_auc": 0.7612696532107511
+    },
+    {
+      "video_id": "g1wyIcLPbq0",
+      "frames": 90000,
+      "speech_fraction": 0.23344444444444445,
+      "roc_auc": 0.8431621525072545
+    },
+    {
+      "video_id": "gjdgj04FzR0",
+      "frames": 90000,
+      "speech_fraction": 0.5707237938620858,
+      "roc_auc": 0.8763453015204858
+    },
+    {
+      "video_id": "hHgg9WI8dTk",
+      "frames": 90000,
+      "speech_fraction": 0.6124777777777778,
+      "roc_auc": 0.7415030044623022
+    },
+    {
+      "video_id": "iK4Y-JKRRAc",
+      "frames": 90000,
+      "speech_fraction": 0.6218888888888889,
+      "roc_auc": 0.7741479483126403
+    },
+    {
+      "video_id": "iSlDMboCSao",
+      "frames": 90000,
+      "speech_fraction": 0.34655555555555556,
+      "roc_auc": 0.6878716470770964
+    },
+    {
+      "video_id": "j5jmjhGBW44",
+      "frames": 90000,
+      "speech_fraction": 0.2446,
+      "roc_auc": 0.8777871267624611
+    },
+    {
+      "video_id": "jgAwJ0RqmYg",
+      "frames": 90000,
+      "speech_fraction": 0.47981111111111113,
+      "roc_auc": 0.802597483092275
+    },
+    {
+      "video_id": "jqZpiHlJUig",
+      "frames": 90000,
+      "speech_fraction": 0.26116666666666666,
+      "roc_auc": 0.8703849959913529
+    },
+    {
+      "video_id": "kMy-6RtoOVU",
+      "frames": 90000,
+      "speech_fraction": 0.5543653395264077,
+      "roc_auc": 0.6949421489394867
+    },
+    {
+      "video_id": "l-jxh8gpxuY",
+      "frames": 90000,
+      "speech_fraction": 0.6815111111111111,
+      "roc_auc": 0.8415636114276688
+    },
+    {
+      "video_id": "l2XO3tQk8lI",
+      "frames": 90000,
+      "speech_fraction": 0.6781888888888888,
+      "roc_auc": 0.8699221836002555
+    },
+    {
+      "video_id": "lDmLcWWBp1E",
+      "frames": 90000,
+      "speech_fraction": 0.30219560434676324,
+      "roc_auc": 0.8484610165097206
+    },
+    {
+      "video_id": "lWXhqIAvarw",
+      "frames": 90000,
+      "speech_fraction": 0.5774111111111111,
+      "roc_auc": 0.7868851642065184
+    },
+    {
+      "video_id": "o4xQ-BEa3Ss",
+      "frames": 90000,
+      "speech_fraction": 0.5096555555555555,
+      "roc_auc": 0.7690368452509119
+    },
+    {
+      "video_id": "oD_wxyTHJ2I",
+      "frames": 90000,
+      "speech_fraction": 0.4315557876723745,
+      "roc_auc": 0.7607668102053281
+    },
+    {
+      "video_id": "oq_bufAhyl8",
+      "frames": 90000,
+      "speech_fraction": 0.5562333333333334,
+      "roc_auc": 0.9005846626098608
+    },
+    {
+      "video_id": "phVLLTMzmKk",
+      "frames": 90000,
+      "speech_fraction": 0.45786666666666664,
+      "roc_auc": 0.8313518671479573
+    },
+    {
+      "video_id": "phrYEKv0rmw",
+      "frames": 90000,
+      "speech_fraction": 0.7112553198582112,
+      "roc_auc": 0.710857980771934
+    },
+    {
+      "video_id": "plkJ45_-pMk",
+      "frames": 90000,
+      "speech_fraction": 0.5874908331296251,
+      "roc_auc": 0.7982012653279273
+    },
+    {
+      "video_id": "qrkff49p4E4",
+      "frames": 90000,
+      "speech_fraction": 0.5517555555555556,
+      "roc_auc": 0.9290587312822303
+    },
+    {
+      "video_id": "qx2vAO5ofmo",
+      "frames": 90000,
+      "speech_fraction": 0.5298444444444445,
+      "roc_auc": 0.9083806701478152
+    },
+    {
+      "video_id": "rFgb2ECMcrY",
+      "frames": 90000,
+      "speech_fraction": 0.18437777777777778,
+      "roc_auc": 0.889202161458835
+    },
+    {
+      "video_id": "rJKeqfTlAeY",
+      "frames": 90000,
+      "speech_fraction": 0.6802111111111111,
+      "roc_auc": 0.8740129575136864
+    },
+    {
+      "video_id": "rUYsoIIE37A",
+      "frames": 90000,
+      "speech_fraction": 0.7618444444444444,
+      "roc_auc": 0.7723252630894242
+    },
+    {
+      "video_id": "rXFlJbXyZyc",
+      "frames": 90000,
+      "speech_fraction": 0.6421277210449702,
+      "roc_auc": 0.7695300765559343
+    },
+    {
+      "video_id": "rk8Xm0EAOWs",
+      "frames": 90000,
+      "speech_fraction": 0.6543777777777777,
+      "roc_auc": 0.8554250410246036
+    },
+    {
+      "video_id": "sADELCyj10I",
+      "frames": 90000,
+      "speech_fraction": 0.6617222222222222,
+      "roc_auc": 0.8457659557191834
+    },
+    {
+      "video_id": "sUVhd0YTKgw",
+      "frames": 90000,
+      "speech_fraction": 0.5164333333333333,
+      "roc_auc": 0.8741467337804877
+    },
+    {
+      "video_id": "skiZueh4lfY",
+      "frames": 90000,
+      "speech_fraction": 0.38366666666666666,
+      "roc_auc": 0.8934373999382159
+    },
+    {
+      "video_id": "t1LXrJOvPDg",
+      "frames": 90000,
+      "speech_fraction": 0.5175,
+      "roc_auc": 0.8765221749729839
+    },
+    {
+      "video_id": "tNpZtigMc4g",
+      "frames": 90000,
+      "speech_fraction": 0.8571222222222222,
+      "roc_auc": 0.7582828454733288
+    },
+    {
+      "video_id": "tghXjom3120",
+      "frames": 90000,
+      "speech_fraction": 0.6475777777777778,
+      "roc_auc": 0.7795949142874566
+    },
+    {
+      "video_id": "tjqCzVjojCo",
+      "frames": 90000,
+      "speech_fraction": 0.2907222222222222,
+      "roc_auc": 0.8723419605871368
+    },
+    {
+      "video_id": "tt0t_a1EDCE",
+      "frames": 90000,
+      "speech_fraction": 0.4341333333333333,
+      "roc_auc": 0.8498617886365663
+    },
+    {
+      "video_id": "u1ltv6r14KQ",
+      "frames": 90000,
+      "speech_fraction": 0.5901888888888889,
+      "roc_auc": 0.7872736942096689
+    },
+    {
+      "video_id": "uNT6HrrnqPU",
+      "frames": 90000,
+      "speech_fraction": 0.3645851858438556,
+      "roc_auc": 0.7795816504638464
+    },
+    {
+      "video_id": "uPJPNPbWMFk",
+      "frames": 90000,
+      "speech_fraction": 0.4961111111111111,
+      "roc_auc": 0.7972884621415369
+    },
+    {
+      "video_id": "uwW0ejeosmk",
+      "frames": 90000,
+      "speech_fraction": 0.45561111111111113,
+      "roc_auc": 0.8370986012859202
+    },
+    {
+      "video_id": "uzPI7FcF79U",
+      "frames": 90000,
+      "speech_fraction": 0.5495333333333333,
+      "roc_auc": 0.6603018723854551
+    },
+    {
+      "video_id": "vfjywN5CN0Y",
+      "frames": 90000,
+      "speech_fraction": 0.5271777777777777,
+      "roc_auc": 0.9298486195969207
+    },
+    {
+      "video_id": "x-6CtPWVi6E",
+      "frames": 90000,
+      "speech_fraction": 0.29669548212182495,
+      "roc_auc": 0.7164235677232533
+    },
+    {
+      "video_id": "xJmRNZVDDCY",
+      "frames": 90000,
+      "speech_fraction": 0.31856666666666666,
+      "roc_auc": 0.880337056582841
+    },
+    {
+      "video_id": "xO4ABy2iOQA",
+      "frames": 30000,
+      "speech_fraction": 0.45553333333333335,
+      "roc_auc": 0.8491240322951781
+    },
+    {
+      "video_id": "xmqSaQPzL1E",
+      "frames": 90000,
+      "speech_fraction": 0.7185111111111111,
+      "roc_auc": 0.6699956371208371
+    },
+    {
+      "video_id": "xp67EC-Hvwk",
+      "frames": 90000,
+      "speech_fraction": 0.566257027933954,
+      "roc_auc": 0.796645060311258
+    },
+    {
+      "video_id": "y7ncweROe9U",
+      "frames": 30000,
+      "speech_fraction": 0.6188333333333333,
+      "roc_auc": 0.8729845444296861
+    },
+    {
+      "video_id": "yMtGmGa8KZ0",
+      "frames": 90000,
+      "speech_fraction": 0.32537777777777777,
+      "roc_auc": 0.7580937913718764
+    },
+    {
+      "video_id": "yn9WN9lsHRE",
+      "frames": 90000,
+      "speech_fraction": 0.5593666666666667,
+      "roc_auc": 0.776397860045897
+    },
+    {
+      "video_id": "yo-Kg2YxlZs",
+      "frames": 90000,
+      "speech_fraction": 0.7081666666666667,
+      "roc_auc": 0.799979952506266
+    },
+    {
+      "video_id": "z-fsLpGHq6o",
+      "frames": 90000,
+      "speech_fraction": 0.7654777777777778,
+      "roc_auc": 0.7039753732209697
+    },
+    {
+      "video_id": "zC5Fh2tTS1U",
+      "frames": 90000,
+      "speech_fraction": 0.7255333333333334,
+      "roc_auc": 0.7196541694577234
+    },
+    {
+      "video_id": "zR725veL-DI",
+      "frames": 90000,
+      "speech_fraction": 0.6965777777777777,
+      "roc_auc": 0.7886876390490388
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "cadencevad-portable-runtime-v1",
+  "platform": "linux",
+  "dsp_backend": "portable-scalar",
+  "scope": "causal frontend + model, one 10 ms hop, single thread",
+  "iterations": 50000,
+  "warmup": 5000,
+  "state_bytes": 20064,
+  "hop_microseconds": {
+    "mean": 27.2135,
+    "p50": 27.0611,
+    "p95": 28.333,
+    "p99": 30.2059,
+    "min": 26.7799,
+    "max": 39.2389
+  },
+  "real_time_factor_p50": 0.00270611,
+  "host": {
+    "cpu": "AMD Ryzen Threadripper PRO 7965WX 24-Cores",
+    "platform": "Linux-6.5.0-41-generic-x86_64-with-glibc2.35",
+    "pinned_core": true,
+    "load_average_at_measurement": "idle (<1.5)"
+  },
+  "note": "Measured on Linux/x86-64 on an otherwise idle machine, single thread, pinned core. The identical source builds for Windows through the MSVC CMake preset and is parity-checked in CI, but Windows timings require a Windows host and are not estimated here.",
+  "reference": {
+    "apple_m4_pro_accelerate_p50_us": 11.417,
+    "source": "upstream FlashVAD native-runtime-m4-pro.json"
+  }
+}

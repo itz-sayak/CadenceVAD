@@ -1,0 +1,30 @@
+# CadenceVAD
+
+> CadenceVAD is a small causal streaming voice activity detector for low-latency voice calls. The current checkpoint is an alpha research preview and is not approved for production.
+
+Canonical site: https://flash.oss.codes/
+Source code: https://github.com/oss-codes/cadencevad
+Model artifacts: https://huggingface.co/oss-codes/cadencevad
+Author: Sayak Dutta
+
+## Capabilities
+
+- One speech probability every 10 ms
+- Browser ONNX and WebAssembly demonstration
+- Native Apple Accelerate runtime for macOS
+- LiveKit Agents, Pipecat, PCMU, PCMA, and PCM16 integrations
+
+## Colab throughput experiment
+
+- A preliminary Tesla T4 model-only run was slower than CPU for one and eight ready streams.
+- CUDA I/O binding improved amortized throughput at batches of 32 and 128 already-ready streams.
+- Frontend compute and scheduler queue time were excluded. The hardened full-trace benchmark must be rerun before release claims.
+- This compute experiment makes no accuracy claim.
+
+## Important limits
+
+- The retained checkpoint has a 26.3% false-alarm rate on the exploratory TEN public-set evaluation.
+- Multilingual India and GCC production accuracy has not been validated.
+- CadenceVAD is acoustic VAD, not semantic end-of-turn detection.
+
+Use the source repository and model card for exact benchmark scope, licences, checksums, and evaluation limitations.
