@@ -23,7 +23,7 @@ export default defineConfig({
     }),
   ],
   output: "server",
-  site: "https://flash.oss.codes",
+  site: "https://itz-sayak.github.io",
   trailingSlash: "always",
   vite: {
     optimizeDeps: {

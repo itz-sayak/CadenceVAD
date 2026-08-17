@@ -2,9 +2,9 @@
 
 > CadenceVAD is a small causal streaming voice activity detector for low-latency voice calls. The current checkpoint is an alpha research preview and is not approved for production.
 
-Canonical site: https://flash.oss.codes/
-Source code: https://github.com/oss-codes/cadencevad
-Model artifacts: https://huggingface.co/oss-codes/cadencevad
+Canonical site: https://github.com/itz-sayak/CadenceVAD
+Source code: https://github.com/itz-sayak/CadenceVAD
+Model artifacts: https://github.com/itz-sayak/CadenceVAD
 Author: Sayak Dutta
 
 ## Capabilities

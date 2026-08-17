@@ -7,7 +7,7 @@
 
   <div class="nav-line">
     <a class="brand" href="#top" aria-label="CadenceVAD report home">
-      <span class="brand-org">oss.codes/</span><span>cadencevad</span><span class="cursor" aria-hidden="true"></span>
+      <span class="brand-org">itz-sayak/</span><span>cadencevad</span><span class="cursor" aria-hidden="true"></span>
     </a>
     <nav aria-label="Report sections">
       <a href="#try-it">test</a>
@@ -22,12 +22,24 @@
 </header>
 
 <style>
+  /* Sticky glass bar. Kept in normal flow so the page rhythm below is
+     unchanged; only the surface and offset differ from the flat rule it
+     replaces. */
   .terminal-header {
-    position: relative;
+    position: sticky;
+    top: 12px;
     z-index: 20;
-    padding: 22px 0 18px;
-    border-bottom: 1px solid var(--border);
+    margin-top: 12px;
+    padding: 16px 22px 14px;
+    border: 1px solid var(--glass-border-lit);
+    border-radius: var(--radius);
+    background: rgba(14, 16, 12, 0.72);
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.08) inset,
+      0 20px 44px -30px rgba(0, 0, 0, 1);
     font-family: var(--mono);
+    backdrop-filter: blur(26px) saturate(170%);
+    -webkit-backdrop-filter: blur(26px) saturate(170%);
   }
 
   .prompt-line,
@@ -107,8 +119,9 @@
 
   nav a:hover,
   nav a:focus-visible {
+    border-radius: var(--radius-pill);
     color: var(--text);
-    background: var(--surface-raised);
+    background: rgba(232, 232, 226, 0.08);
   }
 
   nav .nav-cta {
@@ -130,7 +143,7 @@
 
   @media (max-width: 760px) {
     .terminal-header {
-      padding-top: 16px;
+      padding: 14px 16px 12px;
     }
 
     .nav-line {

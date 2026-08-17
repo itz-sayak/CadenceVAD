@@ -2181,3 +2181,258 @@ footer p {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============================================================
+   Glass layer
+   ------------------------------------------------------------
+   Appended as an override so the structural rules above stay
+   untouched. Nothing here changes layout: no display, grid,
+   flex, or sizing properties are set. Only surface treatment.
+   ============================================================ */
+
+:root {
+  /* Translucent fills. Kept dark enough that text contrast is
+     unchanged from the opaque design it replaces. */
+  --glass-bg: rgba(22, 24, 20, 0.58);
+  --glass-bg-soft: rgba(22, 24, 20, 0.4);
+  --glass-bg-strong: rgba(17, 19, 15, 0.76);
+  --glass-border: rgba(232, 232, 226, 0.1);
+  --glass-border-lit: rgba(232, 232, 226, 0.16);
+  /* The top-edge sheen that reads as a glass bevel. */
+  --glass-sheen: rgba(255, 255, 255, 0.07);
+  --glass-blur: 20px;
+  --glass-blur-deep: 32px;
+  /* Soft ambient elevation, replacing the hard offset shadows. */
+  --glass-shadow:
+    0 1px 0 0 var(--glass-sheen) inset,
+    0 18px 40px -24px rgba(0, 0, 0, 0.9);
+  --glass-shadow-lift:
+    0 1px 0 0 var(--glass-border-lit) inset,
+    0 26px 56px -28px rgba(0, 0, 0, 0.95);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Calmer ground. The 40px grid is dropped in favour of two wide,
+   low-opacity washes so the glass has something to refract. */
+body {
+  background:
+    radial-gradient(60rem 40rem at 82% -8%, rgba(200, 245, 90, 0.07), transparent 68%),
+    radial-gradient(48rem 34rem at 8% 12%, rgba(99, 230, 210, 0.045), transparent 70%),
+    radial-gradient(52rem 40rem at 50% 108%, rgba(200, 245, 90, 0.035), transparent 72%),
+    var(--paper);
+  background-attachment: fixed;
+}
+
+/* ---- Shared surface treatment ---- */
+.site-header,
+.metric-strip,
+.playground-shell,
+.model-preview-shell,
+.call-review,
+.experiment-card,
+.chart-card,
+.signal-card,
+.verdict-grid,
+.benchmark-layout,
+.architecture-facts,
+.channel-mapping,
+.checklist,
+.pipeline,
+.region-grid,
+.speed-calls,
+.table-wrap,
+.playground-caveat,
+.call-review-note,
+.card-foot,
+.latency-readout,
+.boundary-row,
+.playback-controls {
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+}
+
+/* Nested panels sit inside an already-blurred parent, so they only
+   need a faint tint; stacking more blur muddies the text. */
+.model-preview-top,
+.model-preview-facts,
+.model-preview-notes,
+.preview-runtime,
+.call-review-heading,
+.speaker-track,
+.speaker-tracks,
+.region-code,
+.score-label {
+  border-color: var(--glass-border);
+  border-radius: var(--radius-sm);
+  background: var(--glass-bg-soft);
+}
+.brand-mark {
+  border: 1px solid var(--glass-border-lit);
+  border-radius: var(--radius-sm);
+  background: rgba(200, 245, 90, 0.1);
+}
+
+/* The metric strip keeps its four-column grid; only the dividers
+   between cells soften. */
+.metric + .metric {
+  border-left-color: var(--glass-border);
+}
+
+/* ---- Controls ---- */
+nav a,
+.button,
+.test-button {
+  border-radius: var(--radius-pill);
+  transition:
+    background 220ms var(--ease),
+    border-color 220ms var(--ease),
+    color 220ms var(--ease),
+    transform 220ms var(--ease),
+    box-shadow 220ms var(--ease);
+}
+
+.button,
+.test-button {
+  border: 1px solid var(--glass-border-lit);
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+
+/* Hard offset shadows on hover are replaced by a soft lift. */
+.button:hover,
+.button:focus-visible,
+.test-button:hover:not(:disabled):not(.disabled),
+.test-button:focus-visible {
+  border-color: rgba(200, 245, 90, 0.4);
+  background: rgba(200, 245, 90, 0.11);
+  box-shadow:
+    0 1px 0 0 var(--glass-sheen) inset,
+    0 14px 30px -16px rgba(200, 245, 90, 0.32);
+  transform: translateY(-2px);
+}
+
+nav a:hover,
+nav a:focus-visible,
+nav .nav-cta {
+  border-radius: var(--radius-pill);
+  background: rgba(232, 232, 226, 0.07);
+}
+
+.badge,
+.eyebrow,
+.kicker {
+  border-radius: var(--radius-pill);
+}
+
+/* ---- Cards lift on hover ---- */
+.experiment-card,
+.chart-card,
+.signal-card {
+  transition:
+    border-color 260ms var(--ease),
+    box-shadow 260ms var(--ease),
+    transform 260ms var(--ease);
+}
+
+.experiment-card:hover,
+.chart-card:hover,
+.signal-card:hover {
+  border-color: var(--glass-border-lit);
+  box-shadow: var(--glass-shadow-lift);
+  transform: translateY(-3px);
+}
+
+/* ---- Section rules soften to hairlines ---- */
+.section {
+  border-top-color: var(--glass-border);
+}
+
+.site-footer {
+  border-top-color: var(--glass-border);
+}
+
+/* ---- Tables read better without hard cell borders ---- */
+.table-wrap {
+  overflow: hidden;
+}
+
+/* ---- Accent panels keep their acid fill but lose the hard shadow ---- */
+.verdict-banner {
+  border-radius: var(--radius);
+  box-shadow: 0 20px 44px -26px rgba(200, 245, 90, 0.5);
+}
+
+/* ---- Media and canvases inherit the rounded language ---- */
+.live-timeline,
+.chart-axis,
+.bars,
+.bar-track {
+  border-radius: var(--radius-sm);
+}
+
+.bar-fill {
+  border-radius: inherit;
+}
+
+/* Respect users who ask for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .test-button,
+  .experiment-card,
+  .chart-card,
+  .signal-card,
+  nav a {
+    transition: none;
+  }
+
+  .button:hover,
+  .button:focus-visible,
+  .test-button:hover:not(:disabled):not(.disabled),
+  .test-button:focus-visible,
+  .experiment-card:hover,
+  .chart-card:hover,
+  .signal-card:hover {
+    transform: none;
+  }
+}
+
+/* Fallback: without backdrop-filter the translucent fills would let
+   the page background bleed through and hurt contrast, so go opaque. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header,
+  .metric-strip,
+  .playground-shell,
+  .model-preview-shell,
+  .call-review,
+  .experiment-card,
+  .chart-card,
+  .signal-card,
+  .verdict-grid,
+  .benchmark-layout,
+  .architecture-facts,
+  .channel-mapping,
+  .checklist,
+  .pipeline,
+  .region-grid,
+  .speed-calls,
+  .table-wrap,
+  .playground-caveat,
+  .call-review-note,
+  .card-foot,
+  .latency-readout,
+  .boundary-row,
+  .playback-controls,
+  .button,
+  .test-button {
+    background: var(--surface-raised);
+  }
+}

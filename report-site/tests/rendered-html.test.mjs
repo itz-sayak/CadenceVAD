@@ -25,7 +25,7 @@ test("Astro renders the complete static benchmark report", async () => {
   );
   assert.match(
     html,
-    /<link rel="canonical" href="https:\/\/flash\.oss\.codes\/"/i,
+    /<link rel="canonical" href="https:\/\/itz-sayak\.github\.io\/"/i,
   );
   assert.match(
     html,
@@ -33,11 +33,11 @@ test("Astro renders the complete static benchmark report", async () => {
   );
   assert.match(
     html,
-    /<meta property="og:url" content="https:\/\/flash\.oss\.codes\/"/i,
+    /<meta property="og:url" content="https:\/\/itz-sayak\.github\.io\/"/i,
   );
   assert.match(
     html,
-    /<meta property="og:image" content="https:\/\/flash\.oss\.codes\/og-image\.png"/i,
+    /<meta property="og:image" content="https:\/\/itz-sayak\.github\.io\/og-image\.png"/i,
   );
   assert.match(html, /<meta name="twitter:card" content="summary_large_image"/i);
   assert.match(html, /"@type":"SoftwareSourceCode"/);
@@ -54,7 +54,7 @@ test("Astro renders the complete static benchmark report", async () => {
   );
   assert.match(html, /data-clarity-mask="true"/);
   assert.doesNotMatch(html, /\u2014/);
-  assert.match(html, /oss\.codes\/<\/span><span[^>]*>cadencevad/i);
+  assert.match(html, /itz-sayak\/<\/span><span[^>]*>cadencevad/i);
   assert.match(html, /Voice detection in/);
   assert.match(html, /11\.42 microseconds/);
   assert.match(html, /The native path removes framework overhead/);
@@ -95,15 +95,15 @@ test("Astro renders the complete static benchmark report", async () => {
 
   assert.match(
     robots,
-    /Sitemap: https:\/\/flash\.oss\.codes\/sitemap-index\.xml/,
+    /Sitemap: https:\/\/itz-sayak\.github\.io\/sitemap-index\.xml/,
   );
   assert.match(
     sitemapIndex,
-    /<loc>https:\/\/flash\.oss\.codes\/sitemap-0\.xml<\/loc>/,
+    /<loc>https:\/\/itz-sayak\.github\.io\/sitemap-0\.xml<\/loc>/,
   );
   assert.match(
     sitemap,
-    /<loc>https:\/\/flash\.oss\.codes\/<\/loc>/,
+    /<loc>https:\/\/itz-sayak\.github\.io\/<\/loc>/,
   );
   await assert.doesNotReject(
     access(new URL("../dist/client/og-image.png", import.meta.url)),
@@ -210,7 +210,7 @@ test("keeps claims, methodology, and Astro islands explicit in source", async ()
   assert.match(syncScript, /onnx-provider-colab-t4\.json/);
   assert.match(astroConfig, /cloudflare\(\{ imageService: "compile" \}\)/);
   assert.match(astroConfig, /output: "server"/);
-  assert.match(astroConfig, /site: "https:\/\/flash\.oss\.codes"/);
+  assert.match(astroConfig, /site: "https:\/\/itz-sayak\.github\.io"/);
   assert.match(astroConfig, /sitemap\(/);
   assert.match(astroConfig, /CADENCEVAD_BASE/);
   assert.match(astroConfig, /@astrojs\/internal-helpers > picomatch/);

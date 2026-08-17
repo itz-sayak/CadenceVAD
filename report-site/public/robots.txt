@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://flash.oss.codes/sitemap-index.xml
+Sitemap: https://itz-sayak.github.io/sitemap-index.xml
