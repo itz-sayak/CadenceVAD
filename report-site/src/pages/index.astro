@@ -10,33 +10,43 @@ const base = import.meta.env.BASE_URL;
 
 const benchmarkRows = [
   {
-    name: "CadenceVAD native",
-    detail: "Apple Accelerate · embedded weights",
+    name: "CadenceVAD portable C (AVX2)",
+    detail: "Self-contained C · frontend + model",
     hop: "10 ms",
-    latency: "11.42 µs",
-    rtf: "0.001142",
-    init: "3.54 µs",
-    width: "16%",
+    latency: "9.02 µs",
+    rtf: "0.000902",
+    init: "p99 9.83 µs",
+    width: "32%",
+    tone: "ours",
+  },
+  {
+    name: "CadenceVAD portable C (scalar)",
+    detail: "No SIMD · frontend + model",
+    hop: "10 ms",
+    latency: "27.06 µs",
+    rtf: "0.002706",
+    init: "p99 30.21 µs",
+    width: "48%",
     tone: "ours",
   },
   {
     name: "CadenceVAD ONNX",
     detail: "ONNX Runtime · model step only",
     hop: "10 ms",
-    latency: "58.88 µs",
-    rtf: "0.005888*",
-    init: "not captured",
-    width: "42%",
+    latency: "50.77 µs",
+    rtf: "0.005077*",
+    init: "p99 56.32 µs",
+    width: "57%",
     tone: "silero",
   },
   {
     name: "CadenceVAD PyTorch",
     detail: "Reference frontend + model",
     hop: "10 ms",
-    latency: "857.73 µs",
-    rtf: "0.085773",
-    init: "not captured",
-    width: "100%",
+    latency: "450.86 µs",
+    rtf: "0.045086",
+    init: "p99 381.60 µs (model)",
+    width: "88%",
     tone: "ten",
   },
 ];
@@ -173,13 +183,13 @@ const marketRows = [
             </p>
             <h1>
               Voice detection in
-              <span> 11.42 microseconds.</span>
+              <span> 9.02 microseconds.</span>
             </h1>
             <p class="hero-lede">
-              An original 46K-parameter streaming VAD with 10 ms decisions,
-              a 261 KiB native macOS runtime, and local browser, LiveKit,
-              Pipecat, and telephone paths. Runtime is measured; production
-              multilingual accuracy is not yet established.
+              A 46K-parameter streaming VAD with 10 ms decisions, a portable
+              C runtime for Windows, Linux and macOS, and local browser,
+              LiveKit, Pipecat and telephone paths. Runtime is measured;
+              accuracy is a research preview, not a production claim.
             </p>
             <div class="hero-actions">
               <a class="button primary" href="#benchmarks">
@@ -216,20 +226,20 @@ const marketRows = [
             </div>
             <div class="latency-readout">
               <span>frontend + model</span>
-              <strong>0.01142 ms</strong>
+              <strong>0.00902 ms</strong>
             </div>
           </aside>
         </section>
 
         <section class="metric-strip" aria-label="Headline results">
           <Metric
-            value="11.42 µs"
+            value="9.02 µs"
             label="Warm inference"
-            note="Median frontend + model per 10 ms audio hop."
+            note="Median frontend + model per 10 ms hop, one x86-64 core."
           />
           <Metric
-            value="261 KiB"
-            label="Native binary"
+            value="20 KiB"
+            label="Per-call state"
             note="No Python, Torch or ONNX parser in the hot path."
           />
           <Metric
@@ -254,15 +264,17 @@ const marketRows = [
               <h2>The native path removes framework overhead.</h2>
             </div>
             <p>
-              Apple M4 Pro, one calling thread, warm streaming state. The ONNX
-              row excludes feature extraction; the native and PyTorch rows
-              include it.
+              AMD Ryzen Threadripper PRO 7965WX, Linux x86-64, one calling
+              thread on a pinned core, machine otherwise idle, warm streaming
+              state. The ONNX row excludes feature extraction; the portable C
+              and PyTorch rows include it.
             </p>
           </div>
 
           <div class="benchmark-layout">
             <div class="chart-card">
               <div class="chart-axis" aria-hidden="true">
+                <span>1 µs</span>
                 <span>10 µs</span>
                 <span>100 µs</span>
                 <span>1,000 µs</span>
@@ -507,7 +519,7 @@ const marketRows = [
             </article>
             <article>
               <span>Runtime</span>
-              <strong>C + Apple Accelerate</strong>
+              <strong>Portable C (AVX2)</strong>
             </article>
             <article>
               <span>Fallback</span>
@@ -654,30 +666,33 @@ const marketRows = [
 
             <article class="experiment-card real">
               <div class="experiment-top">
-                <span class="experiment-label">Public cross-domain check</span>
+                <span class="experiment-label">AVA-Speech · strictly causal</span>
                 <span class="badge warning">Not release-ready</span>
               </div>
-              <p class="big-score">0.882</p>
-              <p class="score-label">ROC-AUC on TEN&apos;s public test set</p>
+              <p class="big-score">0.844</p>
+              <p class="score-label">
+                best ROC-AUC over 39.67 h of AVA-Speech
+              </p>
               <dl>
                 <div>
-                  <dt>Frames evaluated</dt>
-                  <dd>26,243</dd>
+                  <dt>Benchmark coverage</dt>
+                  <dd>160 clips · 99.2% of nominal</dd>
                 </div>
                 <div>
-                  <dt>F1 at configured threshold</dt>
-                  <dd>0.886 raw / 0.889 detector</dd>
+                  <dt>Silero / TEN, same harness</dt>
+                  <dd>0.902 / 0.897</dd>
                 </div>
                 <div>
-                  <dt>Configured false-alarm rate</dt>
-                  <dd>26.3%</dd>
+                  <dt>Published causal state of the art</dt>
+                  <dd>0.886 (ResectNet)</dd>
                 </div>
               </dl>
               <p class="card-foot">
-                A 26.3% false-alarm rate remains too high for release. Raw AUC
-                95% item-bootstrap interval: 0.853–0.910; detector
-                false-alarm interval: 20.2–32.7% across 30 recordings. Repeated
-                consultation means these are descriptive, not confirmatory.
+                CadenceVAD does not reach the published causal state of the
+                art. Training on call-shaped audio cut the false-alarm rate
+                from 35.8% to 15.7% and lifted clean-speech AUC from 0.861 to
+                0.912, but seed variance is sd 0.0127, so differences below
+                about 0.02 AUC are not resolvable here.
               </p>
             </article>
           </div>
@@ -817,8 +832,11 @@ const marketRows = [
             <details>
               <summary>Benchmark conditions</summary>
               <p>
-                Apple M4 Pro, 14 CPU cores, 24 GB memory, macOS 26.5.2, one
-                calling thread and warmed streaming state. The retained JSON
+                AMD Ryzen Threadripper PRO 7965WX, Linux 6.5 x86-64, one
+                calling thread pinned to a core on an otherwise idle machine,
+                warmed streaming state, 50,000 iterations after 5,000 warm-up.
+                Windows builds from the same source and is parity-checked in
+                CI, but no Windows timings are measured. The retained JSON
                 artifacts include hashes and runtime or toolchain details.
               </p>
             </details>

@@ -26,11 +26,11 @@ const models: ModelPreview[] = [
     name: "CadenceVAD",
     status: "Live runnable here",
     summary:
-      "Original 46K-parameter causal model optimized for small per-call state and an embedded Apple Accelerate runtime.",
+      "46K-parameter causal model optimized for small per-call state and an embedded portable C runtime.",
     runtimeLabel: "Pinned same-run M4 Pro measurement",
     runtime: "11.33 µs median",
     hop: "10 ms",
-    delivery: "261 KiB native · ONNX/WASM fallback",
+    delivery: "portable C · ONNX/WASM fallback",
     scope: "9 training configurations; India/GCC release validation open",
     bestFit: "Low-overhead browser, macOS and PSTN integration research",
     watch: "26.3% false alarms on a repeatedly consulted public set",

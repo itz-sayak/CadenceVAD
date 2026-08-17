@@ -5,7 +5,7 @@ import "../styles/global.css";
 
 const title = "CadenceVAD: Fast Voice Activity Detection for Voice Calls";
 const description =
-  "Test CadenceVAD in your browser and explore measured macOS latency, ONNX, LiveKit, Pipecat, and telephony integrations for real-time voice calls.";
+  "Test CadenceVAD in your browser and explore measured Linux, ONNX, LiveKit, Pipecat, and telephony latency for real-time voice calls.";
 const base = import.meta.env.BASE_URL;
 const site = Astro.site ?? new URL("https://itz-sayak.github.io");
 const canonicalURL = new URL(Astro.url.pathname, site);
@@ -38,7 +38,7 @@ const structuredData = {
       codeRepository: "https://github.com/itz-sayak/CadenceVAD",
       downloadUrl: "https://huggingface.co/itz-sayak/CadenceVAD",
       programmingLanguage: ["Python", "C", "TypeScript"],
-      runtimePlatform: ["WebAssembly", "ONNX Runtime", "Apple Accelerate"],
+      runtimePlatform: ["WebAssembly", "ONNX Runtime", "Portable C"],
       license: [
         "https://opensource.org/license/mit",
         "https://creativecommons.org/licenses/by/4.0/",

@@ -1267,7 +1267,9 @@ h1 span {
 
 .chart-axis {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* One column per tick; the decade scale now starts at 1 us so the
+     sub-10 us portable-C bar sits on the axis rather than off its start. */
+  grid-template-columns: repeat(4, 1fr);
   margin-left: 168px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--line);
@@ -1276,8 +1278,13 @@ h1 span {
   font-size: 0.65rem;
 }
 
-.chart-axis span:nth-child(2) {
+.chart-axis span:nth-child(2),
+.chart-axis span:nth-child(3) {
   text-align: center;
+}
+
+.chart-axis span:last-child {
+  text-align: right;
 }
 
 .chart-axis span:last-child {

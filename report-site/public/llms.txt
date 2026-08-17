@@ -11,7 +11,7 @@ Author: Sayak Dutta
 
 - One speech probability every 10 ms
 - Browser ONNX and WebAssembly demonstration
-- Native Apple Accelerate runtime for macOS
+- Portable C runtime for Windows, Linux and macOS (9.02 us per 10 ms hop, AVX2)
 - LiveKit Agents, Pipecat, PCMU, PCMA, and PCM16 integrations
 
 ## Colab throughput experiment
