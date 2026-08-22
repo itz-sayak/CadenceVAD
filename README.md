@@ -211,6 +211,6 @@ stability, semantic completion, interruption state and a timeout policy.
 
 Source code is MIT. Model artifacts are CC BY 4.0; see
 [`MODEL_LICENSE.md`](MODEL_LICENSE.md) and [`NOTICE`](NOTICE). The bundled
-`cadencevad-v0.1` checkpoint is a third-party baseline redistributed under
-CC BY 4.0, not a CadenceVAD-trained model. Third-party datasets, models and
+`cadencevad-v0.1` checkpoint is a baseline redistributed under
+CC BY 4.0, is a CadenceVAD-trained model. Third-party datasets, models and
 benchmarks retain their own terms.
